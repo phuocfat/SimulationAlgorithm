@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.15.2-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        /*Chrome Speed step*/
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            input[type='range'] {
+            overflow: hidden;
+            width: 80px;
+            -webkit-appearance: none;
+            background-color: #f8ebbfb6;
+            }
+            
+            input[type='range']::-webkit-slider-runnable-track {
+            height: 10px;
+            -webkit-appearance: none;
+            color: #13bba4;
+            margin-top: -1px;
+            }
+            
+            input[type='range']::-webkit-slider-thumb {
+            width: 10px;
+            -webkit-appearance: none;
+            height: 10px;
+            cursor: ew-resize;
+            background: #616161;
+            box-shadow: -80px 0 0 80px #000000;
+            }
+        }
+        .setting {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .setting-list ul {
+            list-style: none;
+            margin-top: 0;
+        } 
+        .setting-list ul li {
+            display: flex;
+            align-items: center;
+        }
+        .setting-list ul li button {
+            margin-left: 10px;
+        }
+        .setting-list ul li select {
+            margin-left: 10px;
+        }
+        .setting-list ul li input {
+            margin-left: 10px;
+        }
+        .condition {
+            display: none;
+        }
+        .condition.active {
+            display: block;
+        }
+        .countSwap {
+            display: none;
+        }
+        .countSwap.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="setting">
+        <div class="setting-list">
+            <ul>
+                <li>
+                    <h3>Pause </h3>
+                    <button class="btn btn-pause">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                </li>
+                <li>
+                    <h3>Next </h3>
+                    <button class="btn btn-next">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </li>
+                <li>
+                    <h3>Speed </h3>
+                    <input class="input-range" type="range" min="0" max="40" color="black" >
+                </li>
+                <li> 
+                    <h3 class="condition">Condition: <strong></strong></h3>
+                </li>
+                <li>  <h3 class="countSwap">Count Swap: <strong></strong></h3>
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+  
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="/js/SelectSort.js"></script>
+    <script src="/js/test.js"></script>
+    <script>
+        let pause = document.getElementsByClassName('btn-pause');
+        let next = document.getElementsByClassName('btn-next');
+        let range = document.getElementsByClassName('input-range');
+        pause[0].addEventListener('click', function () {
+            frameRate(0);
+        })
+        next[0].addEventListener('click', function() {
+            frameRate(10);
+        })
+        range[0].addEventListener('input', function () {
+            frameRate(Number(this.value));
+        })
+    </script>
+</html>
